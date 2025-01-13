@@ -1,6 +1,7 @@
 package com.accessibilityservicechecker
 
 import android.accessibilityservice.AccessibilityServiceInfo
+import android.util.Log
 import android.view.accessibility.AccessibilityManager
 import android.view.accessibility.AccessibilityManager.AccessibilityStateChangeListener
 import com.facebook.react.bridge.Arguments
@@ -62,6 +63,7 @@ class AccessibilityServiceCheckerModule(reactContext: ReactApplicationContext) :
   private class Listener(private val callback: (Boolean) -> Unit) :
     AccessibilityStateChangeListener {
     override fun onAccessibilityStateChanged(isEnabled: Boolean) {
+      Log.d("ASC", "isEnalbed: $isEnabled")
       callback(isEnabled)
     }
   }
